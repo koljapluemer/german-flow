@@ -1,30 +1,20 @@
 <script setup lang="ts">
 import UpdatePrompt from '@/dumb/pwa/UpdatePrompt.vue'
-import { useOnline } from '@/dumb/useOnline'
-
-const online = useOnline()
-
 </script>
 
 <template>
-  <div >
-    <header >
-      <router-link
-        :to="{ name: 'home' }"
-        
-      >
-        mandarin-flow
-      </router-link>
+  <header class="navbar border-b border-base-300 px-4">
+    <router-link
+      :to="{ name: 'practice' }"
+      class="text-lg font-semibold"
+    >
+      german-flow
+    </router-link>
+  </header>
 
-      <nav >
-<!-- nav here -->
-      </nav>
-    </header>
+  <main class="flex-1">
+    <RouterView />
+  </main>
 
-    <main >
-      <RouterView />
-    </main>
-
-    <UpdatePrompt />
-  </div>
+  <UpdatePrompt />
 </template>

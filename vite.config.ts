@@ -15,8 +15,8 @@ export default defineConfig({
       // Icons are generated from public/logo.svg - see pwa-assets.config.ts.
       pwaAssets: { config: true, overrideManifestIcons: true },
       manifest: {
-        name: 'mandarin-flow',
-        short_name: 'mandarin-flow',
+        name: 'german-flow',
+        short_name: 'german-flow',
         description: 'Memorize core phrases for everyday situations, by target language.',
         start_url: '/',
         scope: '/',

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useRegisterSW } from 'virtual:pwa-register/vue'
 import { RefreshCw } from 'lucide-vue-next'
-import OutlineButton from '../OutlineButton.vue'
 
 const { needRefresh, updateServiceWorker } = useRegisterSW()
 
@@ -11,13 +10,23 @@ function reload() {
 </script>
 
 <template>
-  <div v-if="needRefresh">
-    <div>
+  <div
+    v-if="needRefresh"
+    class="toast"
+  >
+    <div class="alert">
       <span>A new version is available.</span>
-      <OutlineButton @click="reload">
-        <RefreshCw :size="14" aria-hidden="true" />
+      <button
+        type="button"
+        class="btn btn-sm btn-outline"
+        @click="reload"
+      >
+        <RefreshCw
+          :size="14"
+          aria-hidden="true"
+        />
         Reload
-      </OutlineButton>
+      </button>
     </div>
   </div>
 </template>
