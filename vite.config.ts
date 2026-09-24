@@ -13,9 +13,12 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'prompt',
-      includeAssets: ['logo.svg'],
-      // Icons are generated from public/logo.svg - see pwa-assets.config.ts.
-      pwaAssets: { config: true, overrideManifestIcons: true },
+      includeAssets: [
+        'favicon.ico',
+        'favicon-16x16.png',
+        'favicon-32x32.png',
+        'apple-touch-icon.png'
+      ],
       manifest: {
         name: 'german-flow',
         short_name: 'german-flow',
@@ -24,7 +27,33 @@ export default defineConfig({
         scope: '/',
         display: 'standalone',
         background_color: '#ffffff',
-        theme_color: '#ffffff'
+        theme_color: '#ffffff',
+        icons: [
+          {
+            src: '/android-chrome-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: '/android-chrome-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: '/maskable-icon-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
+            src: '/maskable-icon-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
+          }
+        ]
       },
       workbox: {
         // App shell only - phrase content (JSON + audio) is runtime-cached below
