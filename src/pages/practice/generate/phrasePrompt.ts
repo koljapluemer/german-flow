@@ -1,5 +1,5 @@
 export const PHRASE_MODEL = 'gpt-4.1-mini'
-const PHRASE_COUNT = 10
+const PHRASE_COUNT = 5
 
 export type GeneratedPhrase = {
   text: string
@@ -26,6 +26,7 @@ export const phraseSchema = {
   properties: {
     phrases: {
       type: 'array',
+      maxItems: PHRASE_COUNT,
       items: {
         type: 'object',
         additionalProperties: false,
