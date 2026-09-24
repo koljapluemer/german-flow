@@ -2,7 +2,7 @@ import { openAiJson } from '@/dumb/openAiJson'
 import { addSentences } from '@/entities/sentence/sentence'
 import { addVocab } from '@/entities/vocab/vocab'
 import { buildExamplePrompt, exampleSchema, type ExampleRequest, type GeneratedVocabExamples } from './examplePrompt'
-import { buildPhrasePrompt, PHRASE_MODEL, phraseSchema, type GeneratedPhrases } from './phrasePrompt'
+import { buildPhrasePrompt, phraseSchema, type GeneratedPhrases } from './phrasePrompt'
 
 const MIN_EXAMPLES = 2
 
@@ -25,7 +25,6 @@ async function generateMissingExamples(topic: string, phrases: GeneratedPhrases[
 
   const existingSentences = new Set(phrases.map(({ text }) => text))
   const result = await openAiJson<GeneratedVocabExamples>(
-    PHRASE_MODEL,
     buildExamplePrompt(topic, requests, [...existingSentences]),
     'vocab_examples',
     exampleSchema
@@ -58,7 +57,7 @@ function mergeSentences(sentences: { id: string; translation: string; vocabIds: 
 }
 
 export async function generatePhrases(topic: string): Promise<void> {
-  const { phrases } = await openAiJson<GeneratedPhrases>(PHRASE_MODEL, buildPhrasePrompt(topic), 'phrases', phraseSchema)
+  const { phrases } = await openAiJson<GeneratedPhrases>(buildPhrasePrompt(topic), 'phrases', phraseSchema)
   const createdAt = new Date()
   const examples = await generateMissingExamples(topic, phrases, getMissingExamples(phrases))
 

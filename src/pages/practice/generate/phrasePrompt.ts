@@ -1,4 +1,3 @@
-export const PHRASE_MODEL = 'gpt-4.1-mini'
 const PHRASE_COUNT = 5
 
 export type GeneratedPhrase = {

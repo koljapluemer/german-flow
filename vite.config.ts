@@ -3,11 +3,13 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import { fileURLToPath, URL } from 'node:url'
+import { devApi } from './netlify/devApi'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    devApi(),
     tailwindcss(),
     VitePWA({
       registerType: 'prompt',

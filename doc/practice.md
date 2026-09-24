@@ -2,10 +2,6 @@
 
 The app is a single practice page (`src/pages/practice/`): an endless spaced-repetition flow over German sentences and their vocab. All content is generated via OpenAI and stored per user in Dexie.
 
-## Setup
-
-`.env` needs `VITE_OPENAI_API_KEY`. It is read in the browser and ends up in the client bundle.
-
 ## Data (`src/db/db.ts`)
 
 | Table           | Key                 | Content                                                  |
@@ -52,4 +48,4 @@ Standard FSRS grades (Again / Hard / Good / Easy), plus:
 
 ## Generation (`generate/`)
 
-`phrasePrompt.ts` holds model, phrase count, prompt and JSON schema (OpenAI structured outputs, strict). `generatePhrases.ts` saves the result: vocab first (existing entries keep their translation, duplicates within a batch are collapsed), then sentences.
+`phrasePrompt.ts` holds phrase count, prompt and JSON schema (OpenAI structured outputs, strict). `generatePhrases.ts` saves the result: vocab first (existing entries keep their translation, duplicates within a batch are collapsed), then sentences.
